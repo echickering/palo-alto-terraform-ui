@@ -14,3 +14,5 @@ services:
       dockerfile: Dockerfile.backend
     ports:
       - "8000:8000"
+    volumes:
+      - ./terraform:/app/terraform
