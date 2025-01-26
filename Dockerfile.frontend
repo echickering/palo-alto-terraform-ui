@@ -1,13 +1,22 @@
 # Dockerfile.frontend
 FROM node:16 AS build
 
+# Set working directory
 WORKDIR /app
-COPY frontend/package.json frontend/package-lock.json ./
-RUN npm install
 
+# Copy package.json
+COPY frontend/package.json ./
+
+# Generate package-lock.json if it doesn't exist
+RUN if [ ! -f package-lock.json ]; then npm install; fi
+
+# Copy the rest of the frontend code
 COPY frontend/ ./
-RUN npm run build
 
+# Install dependencies and build the React app
+RUN npm install && npm run build
+
+# Use NGINX to serve the built app
 FROM nginx:alpine
 COPY --from=build /app/build /usr/share/nginx/html
 EXPOSE 80
