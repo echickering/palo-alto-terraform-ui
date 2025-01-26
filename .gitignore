@@ -1,0 +1,21 @@
+# Ignore Node.js dependencies
+frontend/node_modules/
+frontend/.env
+
+# Ignore Python virtual environment
+backend/venv/
+backend/__pycache__/
+
+# Ignore Terraform state files
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore Docker build artifacts
+**/dist/
+**/build/
